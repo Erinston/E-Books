@@ -49,7 +49,7 @@ class LivrosController extends Controller
 		$validar 			= 	$request->validate([
 			'nome' 			=> 'required | max:30 | string | different:field',
 			'autor' 	    => 'required | alpha',
-			'paginas' 		=> 'required | max:30 | min :0 | numeric | integer |count| between:0,1000' ,
+			'paginas' 		=> 'required | max:30 | min :0 | numeric | integer | between:0,1000' ,
 			'genero' 	    => 'required | size:12',
 			'data' 	        => 'required | date',
 			'idioma' 		=> 'required | max:30',
