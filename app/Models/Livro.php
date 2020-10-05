@@ -14,6 +14,11 @@ class Livro extends Model
     protected $fillable = [
         'nome',
         'autor',
+        'paginas',
+        'genero',
+        'data',
+        'idioma',
+        'editora',
     ];
 
     /*Função que representa o relacionamento de um para muitos*/

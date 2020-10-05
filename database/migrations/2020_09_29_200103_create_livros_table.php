@@ -17,6 +17,13 @@ class CreateLivrosTable extends Migration
             $table->id();
             $table->string('nome', 145);
             $table->string('autor', 145);
+            $table->string('paginas', 10045);
+            $table->string('genero', 145);
+            $table->string('data', 145);
+            $table->string('idioma', 145);
+            $table->string('editora', 145);
+            $table->string('online', 145);
+            $table->string('codigo', 145);
 
             // Usuarios
             $table->Integer('user_id')->unsigned();

@@ -26,13 +26,43 @@
      @endif
             @csrf
             <div>
-                <x-jet-label value="{{ __('Nome do livro') }}" />
+                <x-jet-label value="{{ __('NOME DO LIVRO') }}" />
                 <x-jet-input class="block mt-1 w-full" type="nome" name="nome" :value="old('nome')" value="{{$livros->nome ?? ''}}" required autofocus />
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Autor do livro') }}" />
+                <x-jet-label value="{{ __('AUTOR') }}" />
                 <x-jet-input class="block mt-1 w-full" type="autor" name="autor" value="{{$livros->autor ?? ''}}" required autofocus />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label value="{{ __('Nº PAGINAS') }}" />
+                <x-jet-input class="block mt-1 w-full" type="paginas" name="paginas" value="{{$livros->paginas ?? ''}}" required autofocus />
+            </div>
+            <div>
+                <x-jet-label value="{{ __('GENERO') }}" />
+                <x-jet-input class="block mt-1 w-full" type="genero" name="genero"  value="{{$livros->genero ?? ''}}" required autofocus />
+            </div>
+            <div>
+                <x-jet-label value="{{ __('DATA DE EDIÇÂO') }}" />
+                <x-jet-input class="block mt-1 w-full" type="date" name="data"  value="{{$livros->data ?? ''}}" required autofocus />
+            </div>
+
+            <div>
+                <x-jet-label value="{{ __('IDIOMA(S)') }}" />
+                <x-jet-input class="block mt-1 w-full" type="idioma" name="idioma"  value="{{$livros->idioma ?? ''}}" required autofocus />
+            </div>
+            <div class="mt-4">
+                <x-jet-label value="{{ __('EDITORA') }}" />
+                <x-jet-input class="block mt-1 w-full" type="editora" name="editora" value="{{$livros->editora ?? ''}}" required autofocus />
+            </div>
+            <div class="mt-4">
+                <x-jet-label value="{{ __('ESTA DISPONIVEL ONLINE ? ') }}" />
+                <x-jet-input class="block mt-1 w-full" type="online" name="online" value="{{$livros->online ?? ''}}" required autofocus />
+            </div>
+            <div class="mt-4">
+                <x-jet-label value="{{ __('SENHA DO USUARIO ? ') }}" />
+                <x-jet-input class="block mt-1 w-full" type="password" name="codigo" value="{{$livros->codigo ?? ''}}" required autofocus />
             </div>
 
 

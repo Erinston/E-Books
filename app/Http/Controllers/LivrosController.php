@@ -47,28 +47,63 @@ class LivrosController extends Controller
 
                /*Validando os dados*/
 		$validar 			= 	$request->validate([
-			'nome' 			=> 'required | max:30',
-			'autor' 	    => 'required | max:30',
+			'nome' 			=> 'required | max:30 | string | different:field',
+			'autor' 	    => 'required | alpha',
+			'paginas' 		=> 'required | max:30 | min :0 | numeric | integer |count| between:0,1000' ,
+			'genero' 	    => 'required | size:12',
+			'data' 	        => 'required | date',
+			'idioma' 		=> 'required | max:30',
+			'editora' 	    => 'required | max:30',
+			'online' 	    => 'required | bool',
+			'codigo' 	    => 'required | max:30 | password | alpha_num'  ,
 		],[
 			'nome.required' => 'Preencha o nome da Livro',
-			'nome.max' => 'Digite no máximo 30 caracteres neste campo',
+            'nome.max' => 'Digite no máximo 30 caracteres neste campo',
+            'nome.min' => 'No minimo 1 uma letra',
 
             'autor.required' => 'Preencha o autor do Livro',
-			'autor.max' => 'Digite no máximo 30 caracteres neste campo',
+            'autor.max' => 'Digite no máximo 30 caracteres neste campo',
+
+
+            'paginas.required' => 'Preencha o a quantidade de paginas do Livro',
+			'paginas.max' => 'Digite no máximo 30 caracteres neste campo',
+            'paginas.numeric' => 'Digite apenas numeros no campo Nº PAGINAS',
+
+            'genero.required' => 'Preencha o genero do Livro',
+            'genero.max' => 'Digite no máximo 30 caracteres neste campo',
+
+            'data.required' => 'Preencha o data de edição do Livro',
+
+            'idioma.riquered' => 'Preencha o idioma do livro',
+
+            'editora.riquered' => 'Preencha o idioma do livro',
+
+            'codigo.riquered' => 'Preencha com a senha para salvar o livro',
 		]);
 
 		/*Atualizando todos esses itens da model*/
 		$livros	= new Livro;
-		$livros->nome = $request->nome;
-		$livros->autor = $request->autor;
-		$livros->user_id = Auth::id();
-		$livros->save();
+        $this->save($livros,$request);
 
-        $message = 'Livro cadastrada com Sucesso!';
+                $message = 'Livro cadastrada com Sucesso!';
+                return redirect('/dashboard')->with('success',$message);
 
-		return redirect('/dashboard')->with('success',$message);
     }
+    private function save($livros, Request $request){
 
+        $livros->nome = $request->nome;
+		$livros->autor = $request->autor;
+		$livros->paginas = $request->paginas;
+		$livros->genero = $request->genero;
+		$livros->data = $request->data;
+		$livros->idioma = $request->idioma;
+		$livros->editora = $request->editora;
+		$livros->online = $request->online;
+		$livros->codigo = $request->codigo;
+		$livros->user_id = Auth::id();
+        $livros->save();
+
+    }
     /**
      * Display the specified resource.
      *
@@ -102,10 +137,9 @@ class LivrosController extends Controller
     public function update(Request $request, $id)
     {
         $livro = Livro::where('id',$id)->first();
-        $livro->nome = $request->nome;
-		$livro->autor = $request->autor;
-        $livro->save();
 
+        $this->save($livro,$request);
+        $message = 'Livro Editado com Sucesso!';
         return redirect()->route('livros.arquivada');    }
 
     /**
