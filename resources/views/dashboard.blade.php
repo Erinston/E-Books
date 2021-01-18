@@ -60,11 +60,6 @@
                 <x-jet-label value="{{ __('ESTA DISPONIVEL ONLINE ? ') }}" />
                 <x-jet-input class="block mt-1 w-full" type="online" name="online" value="{{$livros->online ?? ''}}" required autofocus />
             </div>
-            <div class="mt-4">
-                <x-jet-label value="{{ __('SENHA DO USUARIO ? ') }}" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="codigo" value="{{$livros->codigo ?? ''}}" required autofocus />
-            </div>
-
 
             <div class="flex items-center justify-end mt-4">
 

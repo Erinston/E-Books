@@ -48,14 +48,13 @@ class LivrosController extends Controller
                /*Validando os dados*/
 		$validar 			= 	$request->validate([
 			'nome' 			=> 'required | max:30 | string | different:field',
-			'autor' 	    => 'required | alpha',
-			'paginas' 		=> 'required | max:30 | min :0 | numeric | integer | between:0,1000' ,
-			'genero' 	    => 'required | size:12',
+			'autor' 	    => 'required | max:30',
+			'paginas' 		=> 'required | max:30 |' ,
+			'genero' 	    => 'required | ',
 			'data' 	        => 'required | date',
 			'idioma' 		=> 'required | max:30',
 			'editora' 	    => 'required | max:30',
-			'online' 	    => 'required | bool',
-			'codigo' 	    => 'required | max:30 | password | alpha_num'  ,
+			'online' 	    => 'required | ',
 		],[
 			'nome.required' => 'Preencha o nome da Livro',
             'nome.max' => 'Digite no máximo 30 caracteres neste campo',
@@ -63,7 +62,6 @@ class LivrosController extends Controller
 
             'autor.required' => 'Preencha o autor do Livro',
             'autor.max' => 'Digite no máximo 30 caracteres neste campo',
-
 
             'paginas.required' => 'Preencha o a quantidade de paginas do Livro',
 			'paginas.max' => 'Digite no máximo 30 caracteres neste campo',
@@ -75,10 +73,12 @@ class LivrosController extends Controller
             'data.required' => 'Preencha o data de edição do Livro',
 
             'idioma.riquered' => 'Preencha o idioma do livro',
+            'idioma.max' => 'Digite no máximo 30 caracteres neste campo',
 
             'editora.riquered' => 'Preencha o idioma do livro',
+            'editora.max' => 'Digite no máximo 30 caracteres neste campo',
 
-            'codigo.riquered' => 'Preencha com a senha para salvar o livro',
+
 		]);
 
 		/*Atualizando todos esses itens da model*/
@@ -99,7 +99,6 @@ class LivrosController extends Controller
 		$livros->idioma = $request->idioma;
 		$livros->editora = $request->editora;
 		$livros->online = $request->online;
-		$livros->codigo = $request->codigo;
 		$livros->user_id = Auth::id();
         $livros->save();
 

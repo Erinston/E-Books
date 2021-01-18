@@ -23,7 +23,7 @@ class CreateLivrosTable extends Migration
             $table->string('idioma', 145);
             $table->string('editora', 145);
             $table->string('online', 145);
-            $table->string('codigo', 145);
+
 
             // Usuarios
             $table->Integer('user_id')->unsigned();

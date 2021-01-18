@@ -13,9 +13,9 @@
        @foreach($livros as $l)
 
     <tr>
-        <td style="color: black; text-align: center; border:2px solid #808080;">{{$l->nome}}</td>
+        <td style="color: rgb(0, 0, 0); text-align: center; border:2px solid #808080;">{{$l->nome}}</td>
         <td style="color: black; text-align: center; border:2px solid #808080;">{{$l->autor}}</td>
-        <td style="background:green;  border:2px solid #808080;text-align: center;"> <a style="background:green; color: white; " href="{{route('livros.edit', $l->id)}}">Editar</a></td>
+        <td style="background:rgb(128, 179, 128);  border:2px solid #808080;text-align: center;"> <a style="background:green; color: white; " href="{{route('livros.edit', $l->id)}}">Editar</a></td>
 
 
 
